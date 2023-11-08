@@ -1,4 +1,4 @@
-import { createCards, deleteCard, likeCard } from "./components/card.js";
+import { createCard, deleteCard, likeCard } from "./components/card.js";
 import { openPopup, closePopup, closeOverlay } from "./components/modal.js";
 import { initialCards } from "./components/cards.js";
 import "./pages/index.css";
@@ -10,13 +10,13 @@ const fullImage = document.querySelector(".popup__image");
 const fullText = document.querySelector(".popup__caption");
 const popupImage = document.querySelector(".popup_type_image");
 
-function imageCard(evt) {
+function openImageCard(evt) {
   openPopup(popupImage);
   fullImage.src = evt.target.src;
   fullImage.alt = fullText.textContent = evt.target.alt;
 }
 function renderCard(data, container) {
-  container.prepend(createCards(data, likeCard, deleteCard, imageCard));
+  container.prepend(createCard(data, likeCard, deleteCard, openImageCard));
 }
 
 initialCards.forEach(function (item) {
@@ -46,7 +46,7 @@ editButton.addEventListener("click", function () {
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function handleFormSubmit(evt) {
+function handleFromEditSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
@@ -55,7 +55,7 @@ function handleFormSubmit(evt) {
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElementEdit.addEventListener("submit", handleFormSubmit);
+formElementEdit.addEventListener("submit", handleFromEditSubmit);
 
 // Добавление карточек
 const formElementAdd = document.querySelector(".popup__form-add");

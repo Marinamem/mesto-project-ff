@@ -7,7 +7,7 @@ export function likeCard(evt) {
   evt.target.classList.toggle("card__like-button_is-active");
 }
 
-export function createCards(data, onLikeClick, onDeleteClick, onImageClick) {
+export function createCard(data, onLikeClick, onDeleteClick, onImageClick) {
   const templateElement = document
     .querySelector("#card-template")
     .content.querySelector(".card");

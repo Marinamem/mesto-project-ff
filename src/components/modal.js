@@ -16,8 +16,8 @@ export function closeOverlay(evt) {
     closePopup(evt.currentTarget);
 }
 export function handleCloseByEsc(evt) {
-  const popup = document.querySelector(".popup_is-opened");
   if (evt.key === "Escape") {
+    const popup = document.querySelector(".popup_is-opened");
     closePopup(popup);
   }
 }
